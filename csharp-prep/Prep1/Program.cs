@@ -6,12 +6,18 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Prep1 World!");
+        
         Console.Write("What is your first name? ");
-        string first = Console.ReadLine();
+        string firstName = Console.ReadLine();
 
         Console.Write("What is your last name? ");
-        string last = Console.ReadLine();
+        string lastName = Console.ReadLine();
 
-        Console.WriteLine($"Your name is {last}, {first} {last}.");
+        Console.WriteLine($"Your name is {lastName}, {firstName} {lastName}.");
+         // string concatanaiton 
+            // Console.WriteLine("Your name is" + lastName + ", " + firstName + lastName);
+            // ctrl + / = comments out highlighted area
+        
+        // in ternmina - "cd ... " -> dotnet run
             }
 }
