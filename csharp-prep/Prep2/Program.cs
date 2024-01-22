@@ -49,5 +49,8 @@ class Program
         {
             Console.WriteLine("You can do it! Better luck next time!");
         }
+
+        // if and else statements
+        // if -> else if -> else
     }
 }

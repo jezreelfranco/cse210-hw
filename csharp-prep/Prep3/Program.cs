@@ -17,32 +17,34 @@ int magicNumber = int.Parse(input);
 Random randomGenerator = new Random();
 int magicNumberGenerated = randomGenerator.Next(1, 101);
 
-int guess = -1;
+int guess = 0;
 
 // PART TWO: looping through
-// HIGHER than actual number
  while (guess != magicNumberGenerated)
 {
     // ask user for their guess
     Console.WriteLine("What is your guess? ");
     guess = int.Parse(Console.ReadLine());
-        
+
+// HIGHER than actual number 
     if (guess > magicNumberGenerated)
     {
         Console.WriteLine("Lower");
 
     }
- //LOWER      
+ //LOWER than actual number  
     else if (guess < magicNumberGenerated)
     {
         Console.WriteLine("Higher");
     }
+
+// GUESSED RIGHT
     else
     {
         Console.WriteLine("You guessed it right!");
     }
 
-     }
+}
 
     // PART ONE: HIGHER than actual number:
         //if (userGuess > magicNumber)
