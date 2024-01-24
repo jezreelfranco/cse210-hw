@@ -28,7 +28,7 @@ class Program
 // Square number
         int favNumberSquared = (favorite_number*favorite_number);
 
-/// display result
+/// Display result
         void DisplayMessage()
         {
             Console.WriteLine("Welcome to the program!");
