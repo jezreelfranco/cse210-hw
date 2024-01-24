@@ -14,7 +14,7 @@ class Program
         string lastName = Console.ReadLine();
 
         Console.WriteLine($"Your name is {lastName}, {firstName} {lastName}.");
-         // string concatanaiton 
+         // string concatination
             // Console.WriteLine("Your name is" + lastName + ", " + firstName + lastName);
             // ctrl + / = comments out highlighted area
         
