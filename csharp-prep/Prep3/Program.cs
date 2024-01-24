@@ -3,7 +3,7 @@ using System.Globalization;
 
 Console.WriteLine("Hello Prep3 World!");
 
-// ask the user for the magic number
+// ask user for the magic number
 Console.WriteLine("What is the magic number? ");
 string input = Console.ReadLine();
 int magicNumber = int.Parse(input);
