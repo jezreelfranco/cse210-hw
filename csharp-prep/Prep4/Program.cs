@@ -29,7 +29,7 @@ class Program
             numbers.Add(userNumber);
         }
 
-        // CORE REQURIEMENT 1- SUM
+        // CORE REQURIEMENT 1: SUM
         int sum = 0;
 
         foreach (int number in numbers)
