@@ -1,5 +1,8 @@
 using System;
 using System.Reflection.Metadata.Ecma335;
+// Exceeding requirement
+// ADDED user input for mood within entry class
+
 
 class Program
 {
@@ -28,19 +31,18 @@ class Program
                     string prompt = _prompt.GetRandomPrompt();
                     Console.WriteLine(prompt);
                     string response = Console.ReadLine();
-
-                    Entry _mood = new Entry(); //added mood
-                    _mood.DisplayMoods();
-                    // int mood = Convert.ToInt32(Console.ReadLine());  
-                
+                    
                     Entry entry = new Entry();
+                    entry.DisplayMoods();
+                
+                    
                     entry._prompt = prompt;                       
                     entry._response = response;
                     entry._dateTime = DateTime.Now;;
                     // entry._mood = mood; //added mood
 
                     journal._entries.Add(entry);  
-                    journal._entries.Add(_mood);  //added mood
+                    // journal._entries.Add(_mood);  //added mood
                                                   // calling "journal" list from above, ".entries" accesses entry list above, then "Adds" the list of (entries)
                     break;
                 case"2": //display

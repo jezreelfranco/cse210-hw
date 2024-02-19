@@ -9,7 +9,7 @@ class Program
         job1._companyName = "Microsoft";
         job1._startYear = 2019;
         job1._endYear = 2022;
-        // job1.DisplayJobDetails();
+         job1.DisplayJobDetails();
 
         Job job2 = new Job();
         job2._jobTitle = "Manager";
