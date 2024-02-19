@@ -7,7 +7,7 @@ public class Scripture
     Word word1 = new Word();
 
     // Reference reference2 = new Reference("Proverbs", "3", "5", "6");
-        // Console.WriteLine(reference2.GetMultipleReference());
+    // Console.WriteLine(reference2.GetMultipleReference());
         
     public void Reference_and_word()
     {

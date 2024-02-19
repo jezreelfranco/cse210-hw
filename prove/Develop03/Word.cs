@@ -12,7 +12,6 @@ public class Word
         "_________", "__", "___", "______", "___", "______", "_", "___", 
         "____", "____________", "____"
     };
-
     private List<string> _words2 = new List<string>(){
         "Trust", "in", "the", "Lord", "with", "all", "thine", "heart", "_", 
         "lean", "not", "unto", "thine", "own", "understanding", ".", "In", 
