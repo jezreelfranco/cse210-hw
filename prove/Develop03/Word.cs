@@ -1,8 +1,3 @@
-using System.Dynamic;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.Marshalling;
-using System.Security.Cryptography.X509Certificates;
-
 public class Word
 {
     private List<string> _words1 = new List<string>(){
@@ -11,12 +6,19 @@ public class Word
         "believeth", "in", "him", "should", "not", "perish", ",", "but", 
         "have", "everlasting", "life"};
 
-    private List<string> _blanks = new List<string>(){
+    private List<string> _blanks1 = new List<string>(){
         "___", "___", "__", "_____", "___", "_____", "_", "____", "__",
         "____", "___", "____", "________", "___", "_", "____", "_________",
         "_________", "__", "___", "______", "___", "______", "_", "___", 
         "____", "____________", "____"
     };
+
+    private List<string> _words2 = new List<string>(){
+        "Trust", "in", "the", "Lord", "with", "all", "thine", "heart", "_", 
+        "lean", "not", "unto", "thine", "own", "understanding", ".", "In", 
+        "all", "thy", "ways", "acknowledge", "him", "_", "and", "he", "will",
+        "direct", "thy", "paths"};
+    
     
     public Word()
     {
@@ -27,45 +29,60 @@ public class Word
         _words1 = words;
     }
 
-    public void GetWordsShown()
+    public void GetWordsShown1() 
     {
         string combined_text = String.Join( " ", _words1.ToArray());
         Console.WriteLine (combined_text);
     }
 
-    public void GetHiddenWord()
+    public void GetHiddenWord1()
     {
-        Random random = new Random();
-    
-        // Console.WriteLine("\n Press Enter to continue or type 'quit' to finish: ");
-        // string input =Console.ReadLine();
+       Random random = new Random();
 
-        for (int i = 0; i < _blanks.Count; i++)
+        while(true)
         {
-        int randomIndex = random.Next(0, _blanks.Count);
-        string randomBlank = _blanks[randomIndex];
+            Console.WriteLine("Press Enter to continue or type 'quit' to finish: ");
+            string input =Console.ReadLine();
 
-        int wordIndex = randomIndex; 
+            if (input == "quit")
+            {
+                break;
+            }
 
-        _words1.RemoveAt(randomIndex);
-        _words1.Insert(wordIndex, randomBlank);
+            int randomIndex = random.Next(0, _blanks1.Count);
+            string randomBlank = _blanks1[randomIndex];
+
+            int wordIndex = randomIndex; 
+
+            _words1.RemoveAt(randomIndex);
+            _words1.Insert(wordIndex, randomBlank);
+            
+            Console.Clear();
+
+            string combined_text_and_blanks = string.Join(" ", _words1);
+            Console.WriteLine($"John 3:16: " + combined_text_and_blanks);  
+
+            // _blanks.RemoveAt(randomIndex);
         }
-
-        string combined_text_and_blanks = string.Join(" ", _words1);
-        Console.WriteLine(combined_text_and_blanks);
     }
 
-    public void ShowText()
+    public void ShowText1()
     {
         string combined_text_and_blanks = String.Join(" ", _words1.ToArray());
         Console.WriteLine(combined_text_and_blanks);
     }
 
-    public string GetIsHidden()
+    public string GetIsHidden1()
     {
-        string combined_blanks = String.Join(" ", _blanks.ToArray());
+        string combined_blanks = String.Join(" ", _blanks1.ToArray());
         Console.WriteLine(combined_blanks);
 
         return "";
+    }
+
+public void GetWordsShown2()
+    {
+        string combined_text = String.Join( " ", _words2.ToArray());
+        Console.WriteLine (combined_text);
     }
 }
