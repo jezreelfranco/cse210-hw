@@ -31,4 +31,5 @@ public class Reference
         string text = $"{_book} {_chapter}: {_verse}-{_endVerse}";
         return text;
     }
+    
 }

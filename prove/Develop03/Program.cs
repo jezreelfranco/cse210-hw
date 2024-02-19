@@ -9,7 +9,6 @@ class Program
 
         // Scripture scripture2 = new Scripture();
         // scripture2.Reference_and_word2();
-    
     }
 }
         

@@ -18,7 +18,6 @@ public class Word
         "all", "thy", "ways", "acknowledge", "him", "_", "and", "he", "will",
         "direct", "thy", "paths"};
     
-    
     public Word()
     {
     }
