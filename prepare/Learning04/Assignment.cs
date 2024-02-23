@@ -1,5 +1,4 @@
 using System.Dynamic;
-
 public class Assignment
 {
     protected string _name = "";
