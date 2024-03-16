@@ -1,35 +1,45 @@
+using System.Reflection.Metadata.Ecma335;
+
 public  class Goal
 {
     protected List<string> _goals = new List<string>();
-    protected string _description;
+    protected List<string> _description = new List<string> ();
     protected int _points = 0;
+    protected bool _isComplete = false;
 
     public virtual void GetGoals()
-    {
+    {   
         Console.WriteLine("What is the name of your goal? ");
         string goal = Console.ReadLine();
         _goals.Add(goal);
 
         Console.WriteLine("What is a short description of it? ");
-        _description = Console.ReadLine();
+        string description = Console.ReadLine();
+        _description.Add(description);
 
         Console.WriteLine("What is the amount of points associated with this goal? ");
         _points = int.Parse(Console.ReadLine());
     }
 
-    public virtual int GetTotalPoints()
+    public virtual void GetTotalPoints()
     {
-        return _points = 0;
-        // return "\n You have" + _points + "points.\n";
+        Console.WriteLine("You have " + _points + " points.\n");
     }
 
     public virtual void DisplayGoals()
     {
-        Console.WriteLine("The goals are: ");
-        
         foreach (string goal in _goals)
         {
-            Console.WriteLine(goal);
+            Console.Write($"\n[ ] " + Convert.ToString(goal));
         }
+            foreach (string description in _description)
+            {
+                Console.Write(" (" + Convert.ToString(description )+ ")\n");
+            }
+    }
+
+    public virtual bool IsComplete()
+    {
+        return _isComplete;
     }
 }
