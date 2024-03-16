@@ -1,11 +1,13 @@
 using System;
 using System.Formats.Asn1;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
     static void Main(string[] args)
     {
         Goal goals = new Goal();
+        EternalGoal eternalGoal = new EternalGoal();
         ChecklistGoal checklistGoal = new ChecklistGoal();
     
         while (true)
@@ -35,42 +37,42 @@ class Program
 
                         if (goalPicked == "1")
                         {
-                            goals.GetGoals();
+                            goals.SetGoals();
+                            goals.SetDescription();
+                            goals.SetPoints();
                             goals.GetTotalPoints();
                         }
                         if (goalPicked == "2")
                         {
-                            goals.GetGoals();
+                            eternalGoal.SetGoals();
+                            eternalGoal.SetDescription();
+                            eternalGoal.SetPoints();
                             goals.GetTotalPoints();
                         }
                         if (goalPicked == "3")
                         {
-                            checklistGoal.GetGoals();
+                            checklistGoal.SetGoals();
+                            checklistGoal.SetDescription();
+                            checklistGoal.SetPoints();
                             goals.GetTotalPoints();
                         }
                 }
                 if (userChoice == "2")
                 {
-                    // List<Goal> goalsList = new List<Goal>();
-                    // goalsList.Add(new Goal());
-                    // goalsList.Add(new EternalGoal());
-                    // goalsList.Add(new ChecklistGoal());
-
-                    // Console.WriteLine("The goals are: ");
-
-                    // foreach (Goal goal in goalsList)
-                    // {
-                    //     string singlegoal = goal.DisplayGoals();
-                    //     Console.WriteLine(singlegoal);
-                    // }
                     goals.DisplayGoals();
-
+                    eternalGoal.DisplayGoals();
+                    checklistGoal.DisplayGoals();
                 }
                 if (userChoice == "3")
                 {
+                    goals.SaveToFile();
+                    eternalGoal.SaveToFile();
+                    checklistGoal.SaveToFile();
                 }
                 if (userChoice == "4")
                 {
+                    Console.WriteLine("The goals are: \n");
+                    goals.LoadFile();
                 }
                 if (userChoice == "5")
                 {

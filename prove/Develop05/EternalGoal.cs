@@ -1,8 +1,6 @@
 public class EternalGoal: Goal
-{
-    public override void GetGoals()
+{   
+    public EternalGoal ()
     {
-        Console.WriteLine(" ");
     }
-
 }
