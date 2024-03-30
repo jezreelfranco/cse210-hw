@@ -1,7 +1,9 @@
+using System.Security.Cryptography.X509Certificates;
+
 public class ChecklistGoal : Goal
 {
-    private int _frequency;
-    private int _bonus;
+    private int _frequency = 0;
+    private int _bonus = 0;
 
     public ChecklistGoal()
     {
@@ -22,17 +24,34 @@ public class ChecklistGoal : Goal
 
     public override void DisplayGoals()
     {   
-
-        foreach (string goal in _goals)
+        for(int i = _frequency; i < _frequency; i ++)
         {
-            Console.Write($"\n[ ] " + Convert.ToString(goal));
-        }
-            foreach (string description in _description)
+            if (i < _frequency)
             {
-                Console.Write(" (" + Convert.ToString(description)+ ") -- Currently completed 0/" + _frequency + "\n");
+                foreach (string goal in _goals)
+                {
+                    Console.Write($"\n[ ] " + Convert.ToString(goal));
+                }
+                    foreach (string description in _description)
+                    {
+                        Console.Write(" (" + Convert.ToString(description)+ ") -- Currently completed [i]/" + _frequency + "\n");
+                    }
+            if (i == _frequency)
+            {
+                foreach (string goal in _goals)
+                {
+                    Console.Write($"\n[x] " + Convert.ToString(goal));
+                }
+                    foreach (string description in _description)
+                    {
+                        Console.Write(" (" + Convert.ToString(description)+ ") -- Currently completed" + _frequency + "/" + _frequency + "\n");
+                    }
+                }
             }
+        }
         // return Convert.ToString(_goals + Convert.ToString(_description));
     }
+    
     public override void SaveToFile()
     {
         Console.WriteLine("What is the filename for the goal file? ");
@@ -42,8 +61,6 @@ public class ChecklistGoal : Goal
 
         using (StreamWriter outputFile = new StreamWriter(fileName, true))                      // "using" statements makes sure it automatically closes the file, runs code only within {}
         {
-            // for (int i= 0; i < _goals.Count; i ++)
-            // {
                 foreach (string goal in _goals)
                 {
                     outputFile.Write($"\n[ ] " + Convert.ToString(goal));
@@ -52,8 +69,13 @@ public class ChecklistGoal : Goal
                     {
                         outputFile.Write(" (" + Convert.ToString(description)+ ") -- Currently completed 0/" + _frequency + "\n");
                     }
-           // }
         }
+    }
+
+    public override void GetCompletedPoints()
+    {
+        int total = _points + _bonus;
+        Console.WriteLine(total);
     }
 }
 

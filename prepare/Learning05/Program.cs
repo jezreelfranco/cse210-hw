@@ -1,5 +1,6 @@
 using System;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 
 class Program
@@ -9,10 +10,12 @@ class Program
         Square square = new Square("blue", 2);
         Console.WriteLine(square.GetColor());
         Console.WriteLine(square.GetArea());
+        double one = square.GetArea();
         
         Rectangle rectangle = new Rectangle("red", 2, 3);
         Console.WriteLine(rectangle.GetColor());
         Console.WriteLine(rectangle.GetArea());
+        double two = rectangle.GetArea();
 
         Circle circle = new Circle ("purple", 2);
         Console.WriteLine(circle.GetColor());
@@ -22,6 +25,9 @@ class Program
         shapes.Add(square);
         shapes.Add(rectangle);
         shapes.Add(circle);
+
+        double total = one + two;
+        Console.WriteLine("The total is " + total);
 
         foreach (Shape shape in shapes)
         {   

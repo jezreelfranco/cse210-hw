@@ -12,6 +12,10 @@ public class Goal
     {
     }
 
+     Goal goals = new Goal();
+    EternalGoal eternalGoal = new EternalGoal();
+    ChecklistGoal checklistGoal = new ChecklistGoal();
+
     public virtual string GetGoal ()
     {
         return Convert.ToString(_goals);
@@ -41,7 +45,12 @@ public class Goal
         Console.WriteLine("What is the amount of points associated with this goal? ");
         _points = int.Parse(Console.ReadLine());
     }
-    
+
+    public virtual int GetPoints()
+    {
+        return _points;
+    }
+
     public virtual void GetTotalPoints()
     {
         Console.WriteLine("You have " + _points + " points.\n");
@@ -92,11 +101,49 @@ public class Goal
         }
     }
 
-    public virtual bool IsComplete()
+    public virtual int CalculatePoints()
     {
-        while (false)
+        return _points;
+    }
+
+    public virtual void GetCompletedPoints()
+    {
+        Console.WriteLine("Congraduations! You have earned " + _points + "points!\n"); 
+    }
+
+    public virtual void DisplayCompletedGoals()
+    {   
+        foreach (string goal in _goals)
         {
+            Console.Write($"\n[X] " + Convert.ToString(goal));
         }
-        return _isComplete;
+            foreach (string description in _description)
+            {
+                Console.Write(" (" + Convert.ToString(description)+ ")\n");
+            }
+    }
+
+    public virtual void IsComplete()
+    {
+        Console.WriteLine("Which goal did you accomplish? ");
+        string newcompletedGoal = Console.ReadLine();
+
+        int newTotal = goals.GetPoints() + eternalGoal.GetPoints();
+        int threeGoalsTotaled = newTotal + eternalGoal.GetPoints();
+
+            if (newcompletedGoal == "1")
+            {
+                goals.GetCompletedPoints();
+            }
+
+            if (newcompletedGoal == "2")
+            {
+                Console.WriteLine("Congraduations! You have earned " + newTotal + "points!\n"); 
+            }
+
+            if (newcompletedGoal == "3")
+            {
+                Console.WriteLine("Congraduations! You have earned " + threeGoalsTotaled + "points!\n"); 
+            }
     }
 }
