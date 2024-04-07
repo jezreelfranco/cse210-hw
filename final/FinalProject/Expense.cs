@@ -3,12 +3,15 @@ using System.Runtime.CompilerServices;
 public class Expense
 {
     private double _monthlyBudget = 0;
-    private string _date;
-    private string _location;
-    private string _typeOfExpense;
+    protected string _date;
+    protected string _location;
+    protected string _typeOfExpense;
 
-    private List<string> _items = new List<string> ();
-    private double _amount = 0;
+    protected List<string> _items = new List<string> ();
+    protected double _amount = 0;
+
+    protected string _fileName; 
+
 
     public Expense()
     {
@@ -18,6 +21,11 @@ public class Expense
     {
         Console.WriteLine("\nPlease enter this month's monthly budget: ");
         _monthlyBudget = Convert.ToDouble(Console.ReadLine());
+    }
+
+    public double ReturnMonthlyBUudget()
+    {
+        return _monthlyBudget;
     }
 
      public void ExpenseType()
@@ -106,73 +114,95 @@ public class Expense
         }
     }
 
-    public void Amount()
+    public void ReturnItems()
     {
-        Console.WriteLine($"\nWhat was the total amount you spent at {_location}? ");
-        _amount = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine($"{_location} | {_date}");
+        foreach(string item in _items)
+            {
+            Console.WriteLine(item);
+            }
+        Console.WriteLine($"{_amount}");
     }
 
-    public double CalcualteAmount()
+    public double DisplayMonthlyExpenses ()
     {
         return _amount;
     }
 
-    public void DisplayItemsAndTotal()
+    public void SetAmount()
     {
-        Console.WriteLine($"\nThe items you bought at {_location} is: ");
-        
-        foreach (string item in _items)
-        {
-            Console.WriteLine(item);
-        }
+        Console.WriteLine("How much money did you spend at " + _location + " ?");
+        _amount = Convert.ToDouble(Console.ReadLine());
+    }
+    public double Amount()
+    {
+        return _amount;
     }
 
-    public void GetItems()
-    {
-
-        Console.WriteLine($"At {_location} you bought: ");
-        foreach (string item in _items)
-        {
-            Console.WriteLine(item);
-        }
-    }
-
-    public void SaveExpenses()
+    public virtual void SaveExpenses()
     {
         Console.WriteLine("What is the filename you would like to save your expenses to? ");
         string fileName = Console.ReadLine();
 
-        // Expense expense = new Expense();
-        // List<Expense> items = new List<Expense>();
-        // items.Add(new GroceryExpense());
-        // items.Add(new ResturantExpense());
-        // items.Add(new HouseholdExpense());
-        // items.Add(new GasExpense());
-        // items.Add(new EntertainmentExpense());
-        // items.Add(new AppararlExpense());
-        // items.Add(new PersonalExpense());
-
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
-        //     foreach (Expense item in items)
-        //     {
-        //         string userItem = expense.DisplayItems();
-        //         Console.WriteLine(userItem);
-        //     }
-            outputFile.WriteLine($"Type of expense ", _typeOfExpense );
-            outputFile.WriteLine(_date);
-            outputFile.WriteLine(_location);
-            outputFile.WriteLine(_items);
+            outputFile.WriteLine($"Type of expense: " + _typeOfExpense );
+            outputFile.WriteLine("Date: " + _date);
+            outputFile.WriteLine("Location: " + _location + "\n");
+            
+            outputFile.WriteLine("The items your purchased at " + _location + "is: ");
+            
+            foreach(string item in _items)
+                {
+                outputFile.WriteLine(item);
+                }
+
+            outputFile.WriteLine($"\nAmount Spent: {_amount}\n");
         }
+        
+        Console.WriteLine("Your expenses have been saved to " + fileName);
     }
+
+        public void SetFileName()
+        {
+            Console.WriteLine("What is the filename you would like to save your expenses to? ");
+            _fileName = Console.ReadLine();
+        }
+
+        public string GetFileName()
+        {
+            return _fileName;
+        }
+        // public virtual void SaveExpenses(string fileName)
+        // {
+        //     using (StreamWriter outputFile = new StreamWriter(fileName, true))
+        //         {
+        //             outputFile.WriteLine($"Type of expense: {_typeOfExpense}");
+        //             outputFile.WriteLine($"Date: " + _date);
+        //             outputFile.WriteLine("Location: " + _location + "\n");
+
+        //             foreach (string item in _items)
+        //             {
+        //                 outputFile.WriteLine(item);
+        //             }
+
+        //             outputFile.WriteLine($"\nAmount Spent: " + _amount + "\n");
+        //         }
+
+        //     Console.WriteLine("Your expenses have been saved to " + fileName + "/n");
+        // }
+
+        // this works better, but for some reason teh method variables are not showing up correctly...
 
     public void LoadFile()
     {
+        Console.WriteLine("What is the filename?");                                       
+        string findFileName = Console.ReadLine();
+        string[] lines = System.IO.File.ReadAllLines(findFileName);                        
+        
+        foreach (string line in lines)                                                                    
+        {
+            Console.WriteLine(line);                                                      
+        }
     }
-
-    public double DisplayRemainingBalance ()
-    {
-        return 0;
-    }
-
 }

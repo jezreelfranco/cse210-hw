@@ -1,0 +1,15 @@
+Type of expense: 
+Date: 
+Location: 
+
+Type of expense: 
+Date: 
+Location: 
+
+Type of expense: 
+Date: 
+Location: 
+
+
+Amount Spent: 0
+
